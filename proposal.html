@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#120817">
+<title>One Little Question 💌</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--pink:#ff5fa2;--rose:#ff3d81;--purple:#b978ff;--text:#fff8fc;--muted:#ead7e7}
+body{min-height:100vh;overflow:hidden;font-family:"Segoe UI",system-ui,sans-serif;color:var(--text);background:#09050d;display:flex;justify-content:center;align-items:center}
+body:before,body:after{content:"";position:fixed;border-radius:50%;filter:blur(75px);opacity:.42;pointer-events:none}
+body:before{width:300px;height:300px;background:#8e347d;top:-110px;left:-100px;animation:orb 8s ease-in-out infinite alternate}
+body:after{width:340px;height:340px;background:#512f9b;right:-140px;bottom:-120px;animation:orb 10s ease-in-out infinite alternate-reverse}
+.stars{position:fixed;inset:0;opacity:.13;background-image:radial-gradient(circle,white 1px,transparent 1.5px);background-size:58px 58px;animation:stars 20s linear infinite;pointer-events:none}
+.container{width:100%;max-width:470px;min-height:100vh;padding:28px;display:flex;align-items:center;justify-content:center;position:relative;z-index:2}
+.card{width:100%;padding:34px 25px;border:1px solid rgba(255,255,255,.14);border-radius:30px;background:rgba(255,255,255,.055);backdrop-filter:blur(18px);box-shadow:0 25px 80px rgba(0,0,0,.45);text-align:center;animation:up .9s ease both}
+.badge{display:inline-block;padding:8px 13px;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(255,255,255,.06);font-size:12px;color:#f4dcea;margin-bottom:22px}
+.emoji{font-size:55px;display:block;margin-bottom:12px;filter:drop-shadow(0 0 18px rgba(255,95,162,.35));animation:float 3s ease-in-out infinite}
+h1{font-size:clamp(30px,8vw,42px);line-height:1.1;letter-spacing:-1px;margin-bottom:15px}
+h1 span{background:linear-gradient(90deg,#fff,#ffc3df,#d7b6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subtitle{color:var(--muted);font-size:15px;line-height:1.75;margin-bottom:27px}
+.buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+button{font-family:inherit;font-size:15px;font-weight:700;padding:14px 23px;border-radius:999px;cursor:pointer;transition:.25s;border:1px solid rgba(255,255,255,.16)}
+.yes{color:white;background:linear-gradient(135deg,var(--pink),var(--rose));box-shadow:0 12px 32px rgba(255,61,129,.28)}
+.yes:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 17px 40px rgba(255,61,129,.4)}
+.think{color:#fff;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+.think:hover{background:rgba(255,255,255,.13);transform:translateY(-2px)}
+.note{margin-top:17px;font-size:11px;color:#ad9aaa}
+.screen{display:none}
+.success .emoji{animation:pop .65s ease both}
+.success h1{font-size:36px}
+.small{font-size:14px;color:var(--muted);line-height:1.7}
+.restart{margin-top:20px;color:#f5dbea;background:transparent;border-color:rgba(255,255,255,.12);font-size:12px;padding:10px 16px}
+.heart{position:fixed;bottom:-35px;pointer-events:none;z-index:1;animation:rise linear forwards;opacity:0}
+.spark{position:fixed;width:5px;height:5px;border-radius:50%;background:white;pointer-events:none;animation:spark 1.8s ease-out forwards}
+@keyframes up{from{opacity:0;transform:translateY(25px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
+@keyframes orb{to{transform:translate(35px,25px) scale(1.15)}}
+@keyframes stars{to{background-position:58px 58px}}
+@keyframes rise{0%{transform:translateY(0) rotate(0) scale(.7);opacity:0}15%{opacity:.85}100%{transform:translateY(-115vh) rotate(360deg) scale(1.15);opacity:0}}
+@keyframes spark{0%{transform:scale(0);opacity:0}30%{opacity:1}100%{transform:translateY(-70px) scale(.1);opacity:0}}
+@keyframes pop{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+@media(max-width:380px){.container{padding:18px}.card{padding:28px 19px}h1{font-size:30px}.buttons{flex-direction:column}.buttons button{width:100%}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<div class="container">
+  <main class="card">
+    <section id="question" class="screen" style="display:block">
+      <div class="badge">✦ A little something I wanted to ask</div>
+      <div class="emoji">💌</div>
+      <h1>Okay... I have <span>one question.</span></h1>
+      <p class="subtitle">
+        I've been meaning to say this for a while.<br>
+        So instead of making it complicated, I'll just ask...
+      </p>
+
+      <div class="buttons">
+        <button class="yes" onclick="sayYes()">I'm listening 👀</button>
+        <button class="think" onclick="showMessage()">What is it? 😌</button>
+      </div>
+      <div class="note">No pressure. Just a little honest moment. ✦</div>
+    </section>
+
+    <section id="proposal" class="screen">
+      <div class="badge">♡ Okay... here it goes</div>
+      <div class="emoji">🌹</div>
+      <h1>Would you like to <span>give us a chance?</span></h1>
+      <p class="subtitle">
+        I really like talking to you, getting to know you,
+        and having you around.<br><br>
+        So... what do you say? ❤️
+      </p>
+
+      <div class="buttons">
+        <button class="yes" onclick="sayYes()">Yes ❤️</button>
+        <button class="think" onclick="think()">Let me think 😌</button>
+      </div>
+      <div class="note">Whatever you choose, I appreciate your honesty.</div>
+    </section>
+
+    <section id="success" class="screen success">
+      <div class="badge">✦ Okay, this made my day</div>
+      <div class="emoji">❤️</div>
+      <h1>That's a <span>yes</span> I'll remember. 🥹</h1>
+      <p class="small">
+        You just made this little website completely worth making.<br><br>
+        Now I guess I owe you a proper conversation. :)
+      </p>
+      <button class="restart" onclick="restart()">↩ See it again</button>
+    </section>
+
+    <section id="thinking" class="screen">
+      <div class="badge">♡ Take your time</div>
+      <div class="emoji">🌷</div>
+      <h1>That's completely <span>okay.</span></h1>
+      <p class="small">
+        No rush, no pressure.<br>
+        I just wanted you to know how I feel. ❤️<br><br>
+        Whenever you're ready, you can tell me honestly.
+      </p>
+      <button class="restart" onclick="showProposal()">← Go back</button>
+    </section>
+  </main>
+</div>
+
+<script>
+let heartTimer=null;
+
+function showScreen(id){
+  document.querySelectorAll(".screen").forEach(s=>s.style.display="none");
+  document.getElementById(id).style.display="block";
+  window.scrollTo(0,0);
+}
+
+function showMessage(){
+  showScreen("proposal");
+}
+
+function showProposal(){
+  showScreen("proposal");
+}
+
+function sayYes(){
+  showScreen("success");
+  burst();
+  startHearts();
+}
+
+function think(){
+  showScreen("thinking");
+}
+
+function restart(){
+  showScreen("question");
+}
+
+function createHeart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  const symbols=["❤️","💗","💕","💖","✨","♡","🌸"];
+  h.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(14+Math.random()*20)+"px";
+  h.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),10000);
+}
+
+function startHearts(){
+  if(heartTimer)return;
+  heartTimer=setInterval(createHeart,500);
+}
+
+function burst(){
+  for(let i=0;i<28;i++){
+    setTimeout(()=>{
+      const s=document.createElement("div");
+      s.className="spark";
+      s.style.left=(35+Math.random()*30)+"vw";
+      s.style.top=(35+Math.random()*30)+"vh";
+      document.body.appendChild(s);
+      setTimeout(()=>s.remove(),1800);
+    },i*45);
+  }
+}
+</script>
+</body>
+</html>
